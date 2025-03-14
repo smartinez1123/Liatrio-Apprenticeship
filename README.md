@@ -12,4 +12,4 @@ docker build -t express-api .
 ### Running the Docker Conatiner
 In order to run the docker run:
 
-docker run -p 3000:3000 express-api
+docker run -p 80:80 express-api
