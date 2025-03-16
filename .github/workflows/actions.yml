@@ -15,8 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file Dockerfile --tag express-api
     - name: Run the Docker Container
-      run: docker run -d -p 80:80 my-image-name:$(date +%s)
+      run: docker run -d -p 80:80 express-api
     - name: run tests
       uses: liatrio/github-actions/apprentice-action@master
