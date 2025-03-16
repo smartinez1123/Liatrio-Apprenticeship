@@ -7,7 +7,8 @@ app.get("/", (req, res) => {
         message: "My name is Sergio Martinez Barajas",
         timestamp: Date.now()
     };
-    res.json(response);
+    res.setHeader("Content-Type", "application/json");
+    res.send(JSON.stringify(response));
 });
 
 // Start the server
