@@ -30,6 +30,9 @@ jobs:
         docker build -t us-central1-docker.pkg.dev/$GOOGLE_PROJECT/express-api/express-api:latest .
         docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/express-api/express-api:latest
 
+    - name: Authenticate gcloud CLI
+      run: gcloud auth activate-service-account --key-file="${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}"
+
     - name: Deploy to Google Cloud Run
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
