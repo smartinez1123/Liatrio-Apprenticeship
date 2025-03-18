@@ -19,4 +19,4 @@ jobs:
     - name: Run the Docker Container
       run: docker run -d -p 80:80 express-api
     - name: run tests
-      uses: liatrio/github-actions/apprentice-action@master
+      uses: liatrio/github-actions/apprentice-action@v1.0.0
