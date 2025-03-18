@@ -29,3 +29,11 @@ jobs:
       run: |
         docker build -t us-central1-docker.pkg.dev/$GOOGLE_PROJECT/express-api/express-api:latest .
         docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/express-api/express-api:latest
+
+    - name: Deploy to ckoud run
+      run: |
+        gcloud run deploy express-api \
+          --image=us-central1-docker.pkg.dev/$GOOGLE_PROJECT/express-api/express-api:latest \
+          --region=us-central1 \
+          --platform=managed \
+          --allow-unauthenticated
