@@ -18,13 +18,13 @@ jobs:
       run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
     
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/express-api
+      run: docker build . --file Dockerfile --tag express-api
   
     - name: Run the Docker Container
-      run: docker run -d -p 80:80 ${{ secrets.DOCKERHUB_USERNAME }}/express-api
+      run: docker run -d -p 80:80 express-api
       
     - name: run tests
       uses: liatrio/github-actions/apprentice-action@v1.0.0
     
     - name: Push the docker image to Docker hub
-      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/express-api
+      run: docker push express-api
