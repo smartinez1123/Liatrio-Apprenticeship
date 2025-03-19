@@ -30,3 +30,4 @@ spec:
       containers:
       - name: express-api
         image: us-central1-docker.pkg.dev/GOOGLE_PROJECT/express-api-2/express-api:latest
+        imagePullPolicy: Always
