@@ -1,4 +1,4 @@
-name: Google Cloud Deployment
+name: Google cloud Deployment
 
 on:
   push:
@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - name: Code checkout
+    - name: code checkout
       uses: actions/checkout@v2
 
-    - name: Install gcloud CLI
+    - name: install gcloud CLI
       uses: google-github-actions/setup-gcloud@v0
       with:
         project_id: ${{ secrets.GOOGLE_PROJECT }}
@@ -22,25 +22,11 @@ jobs:
 
     - name: Authenticate Docker with Google Cloud
       run: gcloud auth configure-docker us-central1-docker.pkg.dev
-
-    - name: Build and push Docker image
+      
+    - name: build and push docker image
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
       run: |
-        echo "Building Docker image..."
         docker build -t us-central1-docker.pkg.dev/$GOOGLE_PROJECT/express-api/express-api:latest .
-        echo "Pushing Docker image..."
         docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/express-api/express-api:latest
 
-    - name: Check Cloud Run API status
-      run: gcloud services list --enabled | grep run.googleapis.com || gcloud services enable run.googleapis.com
-
-    - name: Deploy to Google Cloud Run
-      run: |
-        echo "Deploying to Cloud Run..."
-        gcloud run deploy express-api \
-          --image us-central1-docker.pkg.dev/$GOOGLE_PROJECT/express-api/express-api:latest \
-          --platform managed \
-          --region us-central1 \
-          --allow-unauthenticated \
-          --project ${{ secrets.GOOGLE_PROJECT }}
