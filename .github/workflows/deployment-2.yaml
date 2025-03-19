@@ -25,5 +25,5 @@ jobs:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT2 }}
       run: |
         gcloud auth configure-docker us-central1-docker.pkg.dev
-        docker build -t us-central1-docker.pkg.dev/$GOOGLE_PROJECT2/express-api-2/express-api:latest .
-        docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT2/express-api-2/express-api:latest
+        docker build -t us-central1-docker.pkg.dev/$GOOGLE_PROJECT/express-api-2/express-api:latest .
+        docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT/express-api-2/express-api:latest
