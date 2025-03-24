@@ -5,8 +5,7 @@ const app = express();
 app.get("/", (req, res) => {
     const response = {
         message: "My name is Sergio Martinez Barajas",
-        timestamp: Date.now(),
-	gradYear: 2026
+        timestamp: Date.now()
     };
     res.setHeader("Content-Type", "application/json");
     res.send(JSON.stringify(response));
